@@ -1,0 +1,16 @@
+services:
+  ft2pp:
+    build: .
+    container_name: ft2pp
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - redis
+    environment:
+      - REDIS_ADDR=redis:6379
+
+  redis:
+    image: redis:alpine
+    container_name: ft2pp-redis
+    restart: always
